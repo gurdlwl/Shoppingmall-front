@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx';
 import axios from 'axios'
+import App from "../App";
 
 class UserStore{
     static __instance = null;
@@ -35,12 +36,15 @@ class UserStore{
                 this.user = response.data;
             } else {
                 this.user = null;
-                return;
             }
+            return;
+
         } catch (e) {
-            alert(e.toLocaleString())
+            alert(e.toLocaleString());
             return false;
         }
-    }
+    };
 
 }
+
+export default UserStore.getInstance();
