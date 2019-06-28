@@ -25,12 +25,19 @@ const App = () => (
         </ul>
 
         <div id='title'><Link to='/'>Shopping mall</Link></div>
-        <input type="text" placeholder="Search"/>
-        <hr/>
 
-        <div id='mainImage'>
-          <img src="" alt=""/>
+        <div className='category-menu-bar'>
+            <ul>
+                <li><Link to='/'>Top</Link></li>
+
+                <li><Link to='/'>Bottom</Link></li>
+
+                <li><Link to='/'>Bag\Shoes</Link></li>
+
+                <li><Link to='/'>Acc</Link></li>
+            </ul>
         </div>
+
       </header>
 
       <section className='app-body'>
