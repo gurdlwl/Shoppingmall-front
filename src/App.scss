@@ -1,5 +1,5 @@
 .app-header {
-  position: absolute;
+  position: static;
   left: 0;
   right: 0;
   top: 0;
@@ -37,6 +37,7 @@
     font-weight: bolder;
     margin: 24px 0 32px 0;
     text-align: center;
+    position: static;
 
     a {
       text-decoration: none;
@@ -48,13 +49,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: static;
     color: black;
 
     ul {
       li{
         float: left;
         transition: background-color 0.4s;
+        border-bottom: 1.5px solid white;
+        transition: all 0.3s;
 
         a{
           color: black;
@@ -67,7 +70,7 @@
 
       li:hover{
         background-color: #0000000A;
-        border-bottom: 2px solid darkviolet;
+        border-bottom: 1.5px solid black;
       }
     }
   }
@@ -75,20 +78,18 @@
 
 
 .app-body {
-  position: absolute;
+  position: static;
+  overflow: hidden;
   top: 250px;
   width: 100%;
+  left: 0;
+  right: 0;
+  height: auto;
   text-align: center;
 }
 
-.left-aside {
-  position: absolute;
-  width: 350px;
-}
-
 .app-footer {
-  position: relative;
-  top: 1645px;
+  position: static;
   bottom: 0;
   height: 200px;
   width: 100vw;
@@ -96,6 +97,7 @@
   text-align: center;
 
   .menu-bar {
+    padding-top: 20px;
     list-style: none;
 
     li {

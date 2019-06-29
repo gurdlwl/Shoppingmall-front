@@ -1,7 +1,48 @@
 .container {
   position: relative;
+  padding-top: 8%;
+  padding-bottom: 20%;
+  background-color: #99999922;
 
-  .login-box {
+  #welcome {
+    font-size: xx-large;
+    font-weight: revert;
+    margin: 20px;
+  }
+
+  .login-box, .register-box {
     position: relative;
+
+    input[type="text"], input[type="password"] {
+      width: 250px;
+      height: auto;
+      line-height: normal;
+      margin-bottom: .5em;
+      padding: 0.8em 0.5em;
+      border: 1px solid #999;
+      border-radius: 0;
+      outline-style: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .postal-code{
+      width: 110px !important;
+    }
+
+    label {
+      padding: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px;
+    }
+
+    .button:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }

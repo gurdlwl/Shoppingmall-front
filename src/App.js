@@ -47,10 +47,6 @@ const App = () => (
         <Route path='/register' exact component={Register}/>
       </section>
 
-      <aside className='left-aside'>
-
-      </aside>
-
       <footer className='app-footer'>
         <ul className='menu-bar'>
           <li><Link>Home</Link></li>

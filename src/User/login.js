@@ -24,12 +24,13 @@ class Login extends Component {
 
         return (
             <div className="container">
+                <div id='welcome'>환영합니다.</div>
                 <div className="login-box">
                     <div><input type="text" placeholder="ID" onChange={this.updateID} value={this.state.account}/></div>
                     <div><input type="password" placeholder="PW" onChange={this.updatePW} value={this.state.password}/></div>
                     <div>
-                        <button onClick={this.login}>LOGIN</button>
-                        <button onClick={this.register}>REGISTER</button>
+                        <div className='button' onClick={this.login}>LOGIN</div>
+                        <div className='button' onClick={this.register}>REGISTER</div>
                     </div>
                 </div>
             </div>

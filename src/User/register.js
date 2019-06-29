@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {inject, observer} from 'mobx-react';
+
+import './index.scss'
 
 @inject('stores')
 @observer
@@ -27,26 +29,25 @@ class Register extends Component {
         return (
             <div className='container'>
                 <div className='register-box'>
-                    <div><input placeholder='ID' onChange={this.updateID} value={this.state.id}/>
-                        <button onClick={this.exists}>CHECK</button>
-                    </div>
-                    <div><input placeholder='PW' onChange={this.updatePW} type='password' value={this.state.pw}/></div>
-                    <div><input placeholder='PW 확인' onChange={this.updateCheckPW} type='password'
-                                value={this.state.checkPW}/></div>
-                    <div><input placeholder='이름' onChange={this.updateName} value={this.state.name}/></div>
-                    <div><input placeholder='전화번호' onChange={this.updateTel} value={this.state.tel}/></div>
-                    <div><input placeholder='휴대전화' onChange={this.updatePhone} value={this.state.phone}/></div>
-                    <div><input placeholder='우편번호' onChange={this.updateAddrNoStart}
-                                value={this.state.addrNoStart}/> - <input onChange={this.updateAddrNoEnd}
-                                                                          value={this.state.addrNoEnd}/></div>
-                    <div><input placeholder='주소' onChange={this.updateAddress} value={this.state.address}/></div>
-                    <div><input placeholder='이메일' onChange={this.updateEmail} value={this.state.email}/></div>
-                    <div><label>동의함</label><input placeholder='동의함' onChange={this.updatePoliciesA} type='checkbox'
-                                                  checked={this.state.policies}/><label>동의안함</label><input
-                        placeholder='동의안함' onChange={this.updatePoliciesD} type='checkbox'
-                        checked={!this.state.policies}/></div>
+                    <input placeholder='아이디' onChange={this.updateID} type="text"  value={this.state.id}/>
+                    <div onClick={this.exists}></div>
+                    <div><input placeholder='비밀번호' onChange={this.updatePW} type="password" value={this.state.pw}/></div>
+                    <div><input placeholder='비밀번호 확인' onChange={this.updateCheckPW} type="password" value={this.state.checkPW}/></div>
+                    <div><input placeholder='이름' onChange={this.updateName} type="text"  value={this.state.name}/></div>
+                    <div><input placeholder='전화번호' onChange={this.updateTel} type="text"  value={this.state.tel}/></div>
+                    <div><input placeholder='휴대전화' onChange={this.updatePhone} type="text"  value={this.state.phone}/></div>
+                    <div><input placeholder='우편번호' onChange={this.updateAddrNoStart} type="text" className="postal-code" value={this.state.addrNoStart}/>
+                            &nbsp;-&nbsp;<input placeholder='우편번호' onChange={this.updateAddrNoEnd} type="text" className="postal-code" value={this.state.addrNoEnd}/></div>
+                    <div><input placeholder='주소' onChange={this.updateAddress} type="text" value={this.state.address}/></div>
+                    <div><input placeholder='이메일' onChange={this.updateEmail} type="text" value={this.state.email}/></div>
                     <div>
-                        <button onClick={this.register}>REGISTER</button>
+                        <label>동의함</label>
+                        <input placeholder='동의함' onChange={this.updatePoliciesA} type="checkbox" checked={this.state.policies}/>
+                        <label>동의안함</label>
+                        <input placeholder='동의안함' onChange={this.updatePoliciesD} type="checkbox" checked={!this.state.policies}/>
+                    </div>
+                    <div>
+                        <div className='button' onClick={this.register}>REGISTER</div>
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@ class Register extends Component {
 
     register = async () => {
         if (this.state.id === '') {
-            alert('ID IS EMPTY');
+            alert('아이디를 입력해주세요.');
             return;
         }
 
@@ -65,42 +66,42 @@ class Register extends Component {
         }
 
         if (this.state.pw !== this.state.checkPW) {
-            alert('PASSWORD NOT MATCH');
+            alert('패스워드가 일치하지 않습니다.');
             return;
         }
 
         if (this.state.name === '') {
-            alert('NAME IS EMPTY');
+            alert('이름을 입력해주세요.');
             return;
         }
 
         if (this.state.tel === '') {
-            alert('TEL IS EMPTY');
+            alert('전화번호를 입력해주세요.');
             return;
         }
 
         if (this.state.phone === '') {
-            alert('PHONE IS EMPTY');
+            alert('휴대전화번호를 입력해주세요.');
             return;
         }
 
         if (this.state.addrNoStart === '' || this.state.addrNoEnd === '') {
-            alert('ADDRESS NUMBER NOT FULLY FILLED');
+            alert('우편번호를 입력해주세요.');
             return;
         }
 
         if (this.state.address === '') {
-            alert('ADDRESS IS EMPTY');
+            alert('주소를 입력해주세요.');
             return;
         }
 
         if (this.state.email === '') {
-            alert('EMAIL IS EMPTY');
+            alert('이메일을 입력해주세요.');
             return;
         }
 
         if (!this.state.policies) {
-            alert('NOT AGREE');
+            alert('약관에 동의하지 않았습니다.');
             return;
         }
 
@@ -114,9 +115,9 @@ class Register extends Component {
     exists = async () => {
         let result = await this.props.stores.userStore.exists(this.state.id);
         if (result) {
-            alert('DUPLICATED');
+            alert('이미 사용중인 아이디입니다.');
         } else {
-            alert('OK');
+            alert('사용할 수 있는 아이디입니다.');
         }
         this.setState({
             ...this.state,
